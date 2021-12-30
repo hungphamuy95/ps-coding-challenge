@@ -20,7 +20,8 @@ namespace ps_coding_challenge
         {
             // Register Repositories
             services.AddScoped<IBaseRepository<Player>, BaseRepository<Player>>();
-            services.AddScoped<IBaseRepository<PlayerQuestState>, BaseRepository<PlayerQuestState>>();
+            services.AddScoped<IBaseRepository<PlayerQuest>, BaseRepository<PlayerQuest>>();
+            services.AddScoped<IBaseRepository<PlayerMilestone>, BaseRepository<PlayerMilestone>>();
             // Register Json loader
             services.AddScoped<IQuestLoader,QuestLoader>();
             // Register Services

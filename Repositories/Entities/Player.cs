@@ -10,6 +10,6 @@ namespace Repositories.Entities
         [Key]
         public string PlayerId { get; set; }
         public int PlayerLevel { get; set; }
-        public ICollection<PlayerQuestState> PlayerQuestStates { get; set; }
+        public ICollection<PlayerQuest> PlayerQuests { get; set; }
     }
 }

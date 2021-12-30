@@ -8,6 +8,6 @@ namespace Services.Interfaces
 {
     public interface IProgressService
     {
-        Task<ProgressResponseModel> GetProcess(ProgressRequestModel req);
+        Task<ProgressResponseModel> Process(ProgressRequestModel req);
     }
 }

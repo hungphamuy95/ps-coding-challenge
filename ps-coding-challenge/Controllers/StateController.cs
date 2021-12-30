@@ -25,13 +25,10 @@ namespace ps_coding_challenge.Controllers
         {
             if (!string.IsNullOrEmpty(playerId))
             {
-                var checkExistedPlayer = await _playerService.ValidatePlayerExisted(playerId);
-                if (checkExistedPlayer)
-                {
+                
                     var res = await _stateService.GetState(playerId);
                     return (res == null) ? StatusCode(500, "Internal Server Error") : Ok(res);
-                }
-                return BadRequest("Player could not be found");
+                
             }
             return BadRequest("Player ID could not be null or empty");
         }

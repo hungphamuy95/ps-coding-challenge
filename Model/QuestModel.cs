@@ -21,6 +21,7 @@ namespace Models
     {
         public int MilestoneIndex { get; set; }
         public int AwardChip { get; set; }
+        public int GoalPoint { get; set; }
         public int Order { get; set; }
     }
 }

@@ -6,15 +6,14 @@ using System.Text;
 
 namespace Repositories.Entities
 {
-    public class PlayerQuestState
+    public class PlayerMilestone
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         [ForeignKey("Player")]
         public string PlayerId { get; set; }
-        public int QuestId { get; set; }
-        public int MileStoneIndex { get; set; }
-        public bool IsCompletedMilestone { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public int MilestoneIndex { get; set; }
+        public DateTime CreateDate { get; set; }
+        public int ChipsAwarded { get; set; }
     }
 }

@@ -74,7 +74,7 @@ namespace ps_coding_challenge
                 using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var context = serviceScope.ServiceProvider.GetService<PlayStudioContext>();
-                    SeedData(context);
+                    //SeedData(context);
                 }
                 app.UseDeveloperExceptionPage();
             }
@@ -98,62 +98,6 @@ namespace ps_coding_challenge
             app.UseSwaggerUi3();
 
         }
-
-        private static void SeedData(PlayStudioContext context)
-        {
-            context.Players.Add(new Player
-            {
-                PlayerId = "Shround",
-                PlayerLevel = 1,
-                PlayerQuestStates = new List<PlayerQuestState>
-                {
-                    new PlayerQuestState()
-                    {
-                        PlayerId = "Shround",
-                        Id = 1,
-                        CreatedDate = DateTime.Now.AddHours(-5),
-                        IsCompletedMilestone = false,
-                        QuestId = 1,
-                        MileStoneIndex = 1
-                    },
-                    new PlayerQuestState()
-                    {
-                        PlayerId = "Shround",
-                        Id = 2,
-                        CreatedDate = DateTime.Now.AddHours(-3),
-                        IsCompletedMilestone = true,
-                        QuestId = 1,
-                        MileStoneIndex = 2
-                    },
-                    new PlayerQuestState()
-                    {
-                        PlayerId = "Shround",
-                        Id = 3,
-                        CreatedDate = DateTime.Now.AddHours(-3),
-                        IsCompletedMilestone = true,
-                        QuestId = 2,
-                        MileStoneIndex = 100
-                    }
-                }
-            });
-            context.Players.Add(new Player
-            {
-                PlayerId = "S1mple",
-                PlayerLevel = 4,
-                PlayerQuestStates = new List<PlayerQuestState>
-                {
-                    new PlayerQuestState()
-                    {
-                        PlayerId = "S1mple",
-                        Id = 4,
-                        CreatedDate = DateTime.Now.AddHours(-1),
-                        IsCompletedMilestone = true,
-                        QuestId = 2,
-                        MileStoneIndex = 1
-                    }
-                }
-            });
-            context.SaveChanges();
-        }
+        
     }
 }

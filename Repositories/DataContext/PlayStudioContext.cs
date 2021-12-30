@@ -15,6 +15,7 @@ namespace Repositories.DataContext
         }
 
         public DbSet<Player> Players { get; set; }
-        public DbSet<PlayerQuestState> PlayerQuestStates { get; set; }
+        public DbSet<PlayerQuest> PlayerQuests { get; set; }
+        public DbSet<PlayerMilestone> PlayerMilestones { get; set; }
     }
 }

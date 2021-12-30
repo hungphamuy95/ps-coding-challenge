@@ -21,17 +21,12 @@ namespace ps_coding_challenge.Controllers
             _playerService = playerService;
         }
         [HttpPost]
-        public async Task<IActionResult> GetProgress([FromBody]ProgressRequestModel request)
+        public async Task<IActionResult> Progress([FromBody]ProgressRequestModel request)
         {
             if (ModelState.IsValid)
             {
-                var isExistedPlayer = await _playerService.ValidatePlayerExisted(request.PlayerId);
-                if (isExistedPlayer)
-                {
-                    var res = await _progressService.GetProcess(request);
+                    var res = await _progressService.Process(request);
                     return (res == null) ? StatusCode(500, "Internal Server Error") : Ok(res);
-                }
-                return BadRequest("Player could not be found");
             }
             return BadRequest(ModelState);
         }

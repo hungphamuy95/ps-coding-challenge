@@ -2,17 +2,25 @@
     {
       "QuestID": 1,
       "QuestName": "test1",
-      "PassingPoint": 99,
+      "PassingPoint": 10,
       "IsActive":  true, 
       "Milestones": [
         {
           "MilestoneIndex": 1,
           "AwardChip": 5,
+          "GoalPoint": 5, 
           "Order": 1
         },
         {
           "MilestoneIndex": 2,
           "AwardChip": 6,
+          "GoalPoint": 100,
+          "Order": 2
+        },
+        {
+          "MilestoneIndex": 3,
+          "AwardChip": 6,
+          "GoalPoint": 5,
           "Order": 2
         }
       ]
@@ -20,12 +28,19 @@
   {
     "QuestID": 2,
     "QuestName": "test2",
-    "PassingPoint": 100,
+    "PassingPoint": 20,
     "IsActive": true,
     "Milestones": [
       {
-        "MilestoneIndex": 100,
+        "MilestoneIndex": 3,
         "AwardChip": 4,
+        "GoalPoint": 5,
+        "Order": 1
+      },
+      {
+        "MilestoneIndex": 3,
+        "AwardChip": 5,
+        "GoalPoint": 100,
         "Order": 1
       }
     ]
