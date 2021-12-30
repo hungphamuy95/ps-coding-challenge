@@ -11,29 +11,29 @@ namespace ps_coding_challenge.Controllers
     [Produces("application/json")]
     [ApiVersion("1.0")]
     [Route("api/[controller]")]
-    public class ProgressController : Controller
+    public class StateController : Controller
     {
-        private readonly IProgressService _progressService;
+        private readonly IStateService _stateService;
         private readonly IPlayerService _playerService;
-        public ProgressController(IProgressService progressService, IPlayerService playerService)
+        public StateController(IStateService stateService, IPlayerService playerService)
         {
-            _progressService = progressService;
+            _stateService = stateService;
             _playerService = playerService;
         }
-        [HttpPost]
-        public async Task<IActionResult> GetProgress([FromBody]ProgressRequestModel request)
+
+        public async Task<IActionResult> GetState(string playerId)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(playerId))
             {
-                var isExistedPlayer = await _playerService.ValidatePlayerExisted(request.PlayerId);
-                if (isExistedPlayer)
+                var checkExistedPlayer = await _playerService.ValidatePlayerExisted(playerId);
+                if (checkExistedPlayer)
                 {
-                    var res = await _progressService.GetProcess(request);
+                    var res = await _stateService.GetState(playerId);
                     return (res == null) ? StatusCode(500, "Internal Server Error") : Ok(res);
                 }
                 return BadRequest("Player could not be found");
             }
-            return BadRequest(ModelState);
+            return BadRequest("Player ID could not be null or empty");
         }
     }
 }

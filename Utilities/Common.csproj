@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Repositories\Repositories.csproj" />
-    <ProjectReference Include="..\Utilities\Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Repositories.DataContext;
 using Repositories.Entities;
 using Models;
+using Serilog;
 
 namespace ps_coding_challenge
 {
@@ -78,6 +79,8 @@ namespace ps_coding_challenge
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSerilogRequestLogging();
+
             //app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -129,7 +132,7 @@ namespace ps_coding_challenge
                         CreatedDate = DateTime.Now.AddHours(-3),
                         IsCompletedMilestone = true,
                         QuestId = 2,
-                        MileStoneIndex = 1
+                        MileStoneIndex = 100
                     }
                 }
             });

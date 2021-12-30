@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Model\Models.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{BE90254F-C493-4D77-A421-C1EE04850A14}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{D8532A88-9723-43B5-AAF3-3AB78019CB19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Utilities\Common.csproj", "{D8532A88-9723-43B5-AAF3-3AB78019CB19}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{0DA5BF87-FDD5-4E73-BF8F-4F4FA8B15ADE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9E811090-1A85-4F46-B189-B50A5AEC8DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services", "Tests.Services\Tests.Services.csproj", "{03F2E282-42D6-40E7-8200-390AF96EE394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Services", "Tests.Services\Tests.Services.csproj", "{03F2E282-42D6-40E7-8200-390AF96EE394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

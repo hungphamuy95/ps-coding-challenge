@@ -24,7 +24,7 @@
     "IsActive": true,
     "Milestones": [
       {
-        "MilestoneIndex": 1,
+        "MilestoneIndex": 100,
         "AwardChip": 4,
         "Order": 1
       }
