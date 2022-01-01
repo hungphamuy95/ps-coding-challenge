@@ -19,6 +19,7 @@ namespace ps_coding_challenge.Controllers
             _stateService = stateService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetState(string playerId)
         {
             if (!string.IsNullOrEmpty(playerId))
