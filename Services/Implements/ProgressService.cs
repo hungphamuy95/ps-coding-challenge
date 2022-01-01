@@ -20,26 +20,21 @@ namespace Services.Implements
 {
     public class ProgressService : IProgressService
     {
-        private readonly IBaseRepository<Player> _playerRepository;
         private readonly IBaseRepository<PlayerQuest> _playerQuestRepository;
         private readonly IBaseRepository<PlayerMilestone> _playerMilestoneRepository;
         private readonly IQuestLoader _questLoader;
-        private readonly ICommonMethod _commonMethod;
         private readonly BetValueConfig _setting;
         readonly ILogger<ProgressService> _logger;
 
-        public ProgressService(IBaseRepository<Player> playerRepository,
+        public ProgressService(
             IBaseRepository<PlayerQuest> playerQuestRepository,
             IBaseRepository<PlayerMilestone> playerMilestoneRepository,
             IQuestLoader questLoader,
-            ICommonMethod utilities,
             IOptions<BetValueConfig> setting, ILogger<ProgressService> logger)
         {
-            _playerRepository = playerRepository;
             _playerQuestRepository = playerQuestRepository;
             _playerMilestoneRepository = playerMilestoneRepository;
             _questLoader = questLoader;
-            _commonMethod = utilities;
             _setting = setting.Value;
             _logger = logger;
         }
@@ -53,6 +48,13 @@ namespace Services.Implements
                 var questPoint = (req.ChipAmountBet * _setting.RateFromBet) + (req.PlayerLevel * _setting.LevelBonusRate);
                 var questPointEarn = questPoint;
 
+
+                // Get all Quests order by passingpoint ascending 
+                // Check if quest is already completed then jump to next quest
+                // In every quest check milestone is completed then jump to next milestone
+                // If current quest point earn is more than milestone goal point then add award to quest point earn
+                // Check quest point earn is more than passing point of current quest then mark it completed by adding new record to database
+                // Let quest point earn minus the passing point of current quest
                 var allQuests = _questLoader.GetAllQuest().OrderBy(x => x.PassingPoint);
                 
                 foreach (var quest in allQuests)
@@ -94,11 +96,14 @@ namespace Services.Implements
                         break;
                 }
 
+                // Adding multiple records to database is already wrapped in transaction, if failed every thing should be rollbacked
                 await _playerMilestoneRepository.SaveChangesAsync();
                 await _playerQuestRepository.SaveChangesAsync();
 
+
+                // Calculate the percentage of completed quests and get the all completed milestones
                 var completedQuest =
-                    await _playerQuestRepository.GetAsQueryable().CountAsync(x => x.PlayerId == req.PlayerId);
+                    await _playerQuestRepository.Count(x => x.PlayerId == req.PlayerId);
 
                 int percentComplete = (int)Math.Round((double)(100 * completedQuest) / _questLoader.GetAllQuest().Count());
 

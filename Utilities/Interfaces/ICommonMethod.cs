@@ -7,6 +7,5 @@ namespace Utilities.Interfaces
 {
     public interface ICommonMethod
     {
-        Task<int> CalculatePercentQuestByPlayer(string playerId);
     }
 }

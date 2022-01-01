@@ -27,7 +27,6 @@ namespace ps_coding_challenge
             // Register Services
             services.AddScoped<IProgressService, ProgressService>();
             services.AddScoped<IStateService, StateService>();
-            services.AddScoped<IPlayerService, PlayerService>();
             // Register Utilities
             services.AddScoped<ICommonMethod, Utilities.Implements.CommonMethod>();
         }

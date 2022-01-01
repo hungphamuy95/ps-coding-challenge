@@ -14,11 +14,9 @@ namespace ps_coding_challenge.Controllers
     public class StateController : Controller
     {
         private readonly IStateService _stateService;
-        private readonly IPlayerService _playerService;
-        public StateController(IStateService stateService, IPlayerService playerService)
+        public StateController(IStateService stateService)
         {
             _stateService = stateService;
-            _playerService = playerService;
         }
 
         public async Task<IActionResult> GetState(string playerId)

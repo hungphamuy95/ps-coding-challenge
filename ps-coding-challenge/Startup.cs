@@ -36,7 +36,6 @@ namespace ps_coding_challenge
             // Use an in-memory database for quick dev and testing
             // TODO: Swap out with a real database in production
             services.AddDbContext<PlayStudioContext>(opt => opt.UseInMemoryDatabase("PlayStudio"));
-            //services.AddDbContext<PlayStudioContext>(opt => opt.UseSqlServer(""));
 
             services.AddControllers();
             
@@ -52,8 +51,7 @@ namespace ps_coding_challenge
                 opt.DefaultApiVersion = new ApiVersion(1, 0);
                 opt.ApiVersionSelector = new CurrentImplementationApiVersionSelector(opt);
             });
-
-            // auto mapper
+            
 
             // DI Register
             DiConfiguration.ConfigServices(services);
@@ -71,17 +69,12 @@ namespace ps_coding_challenge
         {
             if (env.IsDevelopment())
             {
-                using (var serviceScope = app.ApplicationServices.CreateScope())
-                {
-                    var context = serviceScope.ServiceProvider.GetService<PlayStudioContext>();
-                    //SeedData(context);
-                }
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseSerilogRequestLogging();
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -92,7 +85,6 @@ namespace ps_coding_challenge
                 endpoints.MapControllers();
             });
             
-            //app.UseCors("CorsPolicy");
             app.UseApiVersioning();
             app.UseOpenApi();
             app.UseSwaggerUi3();

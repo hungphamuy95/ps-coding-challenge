@@ -14,11 +14,9 @@ namespace ps_coding_challenge.Controllers
     public class ProgressController : Controller
     {
         private readonly IProgressService _progressService;
-        private readonly IPlayerService _playerService;
-        public ProgressController(IProgressService progressService, IPlayerService playerService)
+        public ProgressController(IProgressService progressService)
         {
             _progressService = progressService;
-            _playerService = playerService;
         }
         [HttpPost]
         public async Task<IActionResult> Progress([FromBody]ProgressRequestModel request)

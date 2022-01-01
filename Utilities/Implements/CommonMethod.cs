@@ -24,11 +24,6 @@ namespace Utilities.Implements
             _playerQuestStateRepository = playerQuestStateRepository;
             _questLoader = questLoader;
         }
-
-
-        public async Task<int> CalculatePercentQuestByPlayer(string playerId)
-        {
-            return 1;
-        }
+        
     }
 }

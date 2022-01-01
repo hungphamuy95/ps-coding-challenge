@@ -16,14 +16,12 @@ namespace Services.Implements
 {
     public class StateService : IStateService
     {
-        private readonly ICommonMethod _utilities;
         private readonly IBaseRepository<PlayerQuest> _playerQuestRepository;
         private readonly IBaseRepository<PlayerMilestone> _playerMilestoneRepository;
         private readonly IQuestLoader _questLoader;
         private readonly ILogger<StateService> _logger;
-        public StateService(ICommonMethod utilities, IBaseRepository<PlayerQuest> playerQuestRepository, IBaseRepository<PlayerMilestone> playerMilestoneRepository, ILogger<StateService> logger, IQuestLoader questLoader)
+        public StateService(IBaseRepository<PlayerQuest> playerQuestRepository, IBaseRepository<PlayerMilestone> playerMilestoneRepository, ILogger<StateService> logger, IQuestLoader questLoader)
         {
-            _utilities = utilities;
             _playerQuestRepository = playerQuestRepository;
             _logger = logger;
             _questLoader = questLoader;
@@ -33,16 +31,21 @@ namespace Services.Implements
         {
             try
             {
+                // Get all completed quests by player id
                 var completedQuest =
-                    await _playerQuestRepository.GetAsQueryable().CountAsync(x => x.PlayerId == playerId);
+                    await _playerQuestRepository.Count(x => x.PlayerId == playerId);
 
+                // Calculate the percentage of completed quests and get the all completed milestones
                 var percentComplete = (int)Math.Round((double)(100 * completedQuest) / _questLoader.GetAllQuest().Count());
-                var lastMilestoneIndexCompleted = await _playerMilestoneRepository.GetAsQueryable()
-                    .OrderByDescending(x => x.CreateDate).FirstOrDefaultAsync();
+
+                // Get last completed milestone by created datetime
+                var lastMilestoneIndexCompleted =  _playerMilestoneRepository.GetAsQueryable()
+                    .Where(x => x.PlayerId == playerId)
+                    .OrderByDescending(x => x.CreateDate).FirstOrDefault();
                 return new StateResponseModel
                 {
                     TotalQuestPercentCompleted = percentComplete,
-                    LastMilestoneIndexCompleted = lastMilestoneIndexCompleted.MilestoneIndex
+                    LastMilestoneIndexCompleted = lastMilestoneIndexCompleted?.MilestoneIndex ?? 0
                 };
             }
             catch (Exception ex)
