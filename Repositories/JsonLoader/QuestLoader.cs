@@ -18,7 +18,7 @@ namespace Repositories.JsonLoader
         }
         public IEnumerable<QuestModel> GetAllQuest()
         {
-            return JsonConvert.DeserializeObject<IEnumerable<QuestModel>>(File.ReadAllText(_hostingEnvironment.ContentRootPath + @"\DataConfig.json"));
+            return JsonConvert.DeserializeObject<IEnumerable<QuestModel>>(File.ReadAllText(_hostingEnvironment.ContentRootPath + @"/DataConfig.json"));
         }
     }
 }
