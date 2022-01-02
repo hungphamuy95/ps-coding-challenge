@@ -10,10 +10,14 @@ namespace Repositories.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("Player")]
+        [MaxLength(250)]
+        [Required]
         public string PlayerId { get; set; }
+        [Required]
         public int MilestoneIndex { get; set; }
+        [Required]
         public DateTime CreateDate { get; set; }
+        [Required]
         public int ChipsAwarded { get; set; }
     }
 }

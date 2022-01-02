@@ -10,9 +10,12 @@ namespace Repositories.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("Player")]
+        [MaxLength(250)]
+        [Required]
         public string PlayerId { get; set; }
+        [Required]
         public int QuestId { get; set; }
+        [Required]
         public DateTime CreatedDate { get; set; }
     }
 }
