@@ -16,7 +16,7 @@ This Github repository contains the solution and completed installation for Play
 
 # Data model structure
 
-*  [Program flow and business](https://github.com/hungphamuy95/ps-coding-challenge/wiki/Data-model-structure)
+*  [Data model structure](https://github.com/hungphamuy95/ps-coding-challenge/wiki/Data-model-structure)
 
 # Data configuration guide
 
