@@ -7,7 +7,7 @@ This Github repository contains the solution and completed installation for Play
 
 > Online demo for quick test only because config data is not allowed
 > 
-> Online demo is hosted in heroku free dyno so it sleep 6 hours every day
+> Online demo is hosted in heroku free dyno so it sleeps 6 hours every day
 
 # How to build and run from source
 
