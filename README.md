@@ -1,6 +1,11 @@
+
 # Welcome to my coding challenge solution
 
 This Github repository contains the solution and completed installation for PlayStudios Asia Backend Coding Challenge (test 2)
+
+[Online demo](https://ps-coding-challenge.herokuapp.com/swagger/index.html)
+
+> Online demo for quick test only because config data is not allowed
 
 # How to build and run from source
 
