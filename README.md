@@ -5,7 +5,7 @@ This Github repository contains the solution and completed installation for Play
 
 [Online demo](https://ps-coding-challenge.herokuapp.com/swagger/index.html)
 
-> Online demo for quick test only because config data is not allowed
+> Online demo for quick test only because data configuration is not allowed
 > 
 > Online demo is hosted in heroku free dyno so it sleeps 6 hours every day
 
